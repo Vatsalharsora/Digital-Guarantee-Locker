@@ -126,10 +126,7 @@ export const GuaranteesList = ({ onBack }: GuaranteesListProps) => {
     alert(`Viewing documents for ${guarantee.productName}`);
   };
 
-  const handleDownloadDocument = (guarantee: Guarantee, document: string) => {
-    // In real app, this would download the document
-    alert(`Downloading ${document} for ${guarantee.productName}`);
-  };
+
 
   return (
     <motion.div

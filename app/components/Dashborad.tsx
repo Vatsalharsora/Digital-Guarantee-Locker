@@ -62,9 +62,9 @@ export const Dashboard = ({ onLogout, onNavigate }: DashboardProps) => {
         }
     };
 
-    const sortGuarantees = (guarantees: any[], sortBy: string, sortOrder: 'asc' | 'desc') => {
+    const sortGuarantees = (guarantees: typeof recentGuarantees, sortBy: string, sortOrder: 'asc' | 'desc') => {
         return [...guarantees].sort((a, b) => {
-            let aVal, bVal;
+            let aVal: string | number, bVal: string | number;
             
             switch (sortBy) {
                 case 'name':
@@ -84,8 +84,8 @@ export const Dashboard = ({ onLogout, onNavigate }: DashboardProps) => {
                     bVal = parseInt(b.value.replace(/[₹,]/g, ''));
                     break;
                 default:
-                    aVal = a[sortBy];
-                    bVal = b[sortBy];
+                    aVal = (a as Record<string, unknown>)[sortBy] as string;
+                    bVal = (b as Record<string, unknown>)[sortBy] as string;
             }
 
             if (sortOrder === 'asc') {

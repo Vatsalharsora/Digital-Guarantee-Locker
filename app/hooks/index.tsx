@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback, Dispatch, SetStateAction } from "react";
+import { useState, useEffect, useCallback } from "react";
 
 // ---------- useLocalStorage ----------
 export function useLocalStorage<T>(key: string, initialValue: T) {
@@ -45,7 +45,7 @@ export function useLocalStorage<T>(key: string, initialValue: T) {
 }
 
 // ---------- useForm ----------
-export function useForm<T extends Record<string, any>>(initialValues: T, validate: (values: T) => Partial<Record<keyof T, string>>) {
+export function useForm<T extends Record<string, unknown>>(initialValues: T, validate: (values: T) => Partial<Record<keyof T, string>>) {
   const [values, setValues] = useState<T>(initialValues);
   const [errors, setErrors] = useState<Partial<Record<keyof T, string>>>({});
   const [touched, setTouchedState] = useState<Partial<Record<keyof T, boolean>>>({});
@@ -61,7 +61,7 @@ export function useForm<T extends Record<string, any>>(initialValues: T, validat
 
   const clearError = useCallback((field: keyof T) => {
   setErrors((prev) => {
-    const { [field]: _, ...rest } = prev;
+    const { [field]: removed, ...rest } = prev;
     return rest as Partial<Record<keyof T, string>>;
   });
     }, []);

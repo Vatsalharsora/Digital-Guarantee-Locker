@@ -250,7 +250,7 @@ export const storageUtils = {
   /**
    * Set item in localStorage with JSON stringify
    */
-  setItem: (key: string, value: any): void => {
+  setItem: (key: string, value: unknown): void => {
     try {
       localStorage.setItem(key, JSON.stringify(value));
     } catch (error) {
@@ -354,7 +354,7 @@ export const apiUtils = {
   /**
    * Create FormData for file uploads
    */
-  createFormData: (data: Record<string, any>): FormData => {
+  createFormData: (data: Record<string, unknown>): FormData => {
     const formData = new FormData();
     Object.entries(data).forEach(([key, value]) => {
       if (value instanceof File) {
@@ -528,7 +528,7 @@ export const urlUtils = {
   /**
    * Build query string from object
    */
-  buildQueryString: (params: Record<string, any>): string => {
+  buildQueryString: (params: Record<string, unknown>): string => {
     const searchParams = new URLSearchParams();
     Object.entries(params).forEach(([key, value]) => {
       if (value !== null && value !== undefined) {
@@ -562,7 +562,7 @@ export const errorUtils = {
     if (error instanceof Error) return error.message;
     if (typeof error === 'string') return error;
     if (error && typeof error === 'object' && 'message' in error) {
-      return String((error as any).message);
+      return String((error as { message: unknown }).message);
     }
     return 'An unknown error occurred';
   },
@@ -578,7 +578,7 @@ export const errorUtils = {
 };
 
 // Export all utilities as a default object for easy importing
-export default {
+const utilsExports = {
   cn,
   validation,
   dateUtils,
@@ -592,3 +592,5 @@ export default {
   urlUtils,
   errorUtils
 };
+
+export default utilsExports;

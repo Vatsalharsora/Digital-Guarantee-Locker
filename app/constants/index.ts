@@ -449,7 +449,7 @@ export const API_ENDPOINTS = {
   },
 };
 
-export default {
+const constants = {
   APP_NAME,
   APP_VERSION,
   APP_DESCRIPTION,
@@ -477,3 +477,5 @@ export default {
   REGEX_PATTERNS,
   API_ENDPOINTS,
 };
+
+export default constants;

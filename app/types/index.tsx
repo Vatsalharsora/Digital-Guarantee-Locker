@@ -81,7 +81,7 @@ export interface GuaranteeDocument {
   reminders: ReminderSettings;
   createdAt: Date;
   updatedAt: Date;
-  metadata?: Record<string, any>;
+  metadata?: Record<string, unknown>;
 }
 
 export interface DocumentFile {
@@ -212,7 +212,7 @@ export interface ContactFormData {
 /**
  * API Response types
  */
-export interface ApiResponse<T = any> {
+export interface ApiResponse<T = unknown> {
   success: boolean;
   data?: T;
   message?: string;
@@ -256,7 +256,7 @@ export interface Notification {
   type: NotificationType;
   title: string;
   message: string;
-  data?: Record<string, any>;
+  data?: Record<string, unknown>;
   isRead: boolean;
   createdAt: Date;
   expiresAt?: Date;
@@ -275,7 +275,7 @@ export type NotificationType =
 export interface AppError {
   code: string;
   message: string;
-  details?: any;
+  details?: unknown;
   timestamp: Date;
 }
 
@@ -306,7 +306,7 @@ export interface CardProps {
 export interface TableColumn<T> {
   key: keyof T | string;
   title: string;
-  render?: (value: any, record: T) => React.ReactNode;
+  render?: (value: unknown, record: T) => React.ReactNode;
   sortable?: boolean;
   width?: string | number;
   align?: 'left' | 'center' | 'right';
@@ -399,7 +399,7 @@ export interface ApiEndpoints {
  */
 export interface AnalyticsEvent {
   event: string;
-  properties?: Record<string, any>;
+  properties?: Record<string, unknown>;
   userId?: string;
   timestamp?: Date;
 }
@@ -431,4 +431,5 @@ export interface FeatureFlags {
   maxFilesPerDocument: number;
 }
 
-export default {};
+const typeExports = {};
+export default typeExports;
