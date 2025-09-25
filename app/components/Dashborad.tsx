@@ -37,6 +37,7 @@ export const Dashboard = ({ onLogout, onNavigate }: DashboardProps) => {
         { id: "guarantees", label: "My Guarantees", icon: "📄" },
         { id: "upload", label: "Upload Document", icon: "📤" },
         { id: "reminders", label: "Reminders", icon: "⏰" },
+        { id: "car-blogs", label: "Car Blogs", icon: "🚗" },
         { id: "contact", label: "Contact Us", icon: "📞" },
         { id: "profile", label: "Profile", icon: "👤" },
     ];
